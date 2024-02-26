@@ -1,0 +1,3 @@
+0 Headphone
+1 No Headphone
+2 No Human
