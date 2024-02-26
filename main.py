@@ -6,8 +6,8 @@ from simple_ai import *
 from uart import *
 
 AIO_FEED_ID = ["nutnhan1", "nutnhan2"]
-AIO_USERNAME = "hieutran1199"
-AIO_KEY = "aio_nDig39sI7fRYt3vpkXLBcz6ESZyP"
+AIO_USERNAME = ""
+AIO_KEY = ""
 
 def connected(client):
     print("Ket noi thanh cong ...")
