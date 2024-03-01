@@ -11,10 +11,10 @@ def getPort():
             splitPort = strPort.split(" ")
             commPort = (splitPort[0])
     #return commPort
-    return "COM5"
+    return "COM6"
 
 if getPort() != "None":
-    ser = serial.Serial( port=getPort(), baudrate=115200) # mở cổng COM
+    ser = serial.Serial(port=getPort(), baudrate=115200) # mở cổng COM
     print(ser)
 
 mess = ""
@@ -23,9 +23,10 @@ def processData(client,data):
     data = data.replace("#", "")
     splitData = data.split(":")
     print(splitData)
-    if splitData[1] == "TEMP":
-        client.publish("bbc-temp", splitData[2])
-
+    if splitData[1] == "T":
+        client.publish("cambien1", splitData[2])
+    elif splitData[1] == "H":
+        client.publish("cambien2", splitData[2])
 
 mess = ""
 def readSerial(client):

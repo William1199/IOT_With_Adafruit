@@ -1,18 +1,19 @@
 import datetime
 import sys
 from Adafruit_IO import MQTTClient
-import time, random
+import time
+import random
 from simple_ai import *
 from uart import *
 
-AIO_FEED_ID = ["nutnhan1", "nutnhan2"]
-AIO_USERNAME = ""
-AIO_KEY = ""
+AIO_FEED_ID = ["button1", "button2","button3"]
+AIO_USERNAME = "hieutran1199"
+AIO_KEY = ("aio_WoTr22KpNqkGIv1ftQf7GrNuupxl")
 
 def connected(client):
     print("Ket noi thanh cong ...")
     for topic in AIO_FEED_ID:
-        client.subscribe(AIO_FEED_ID)
+        client.subscribe(topic)
 
 def subscribe(client , userdata , mid , granted_qos):
     print("Subscribe thanh cong ...")
@@ -47,8 +48,8 @@ while True:
     #     print("Sensor",sensor_type)
     #     if sensor_type == 1:
     #         print("Temperture...")
-    #         temp = random.randint(10,20)
-    #         client.publish("cambien2", temp)
+    #         temp = random.randint(10,60)
+    #         client.publish("cambien1", temp)
     #         sensor_type = 2
     #     elif sensor_type == 2:
     #         print("Humidity...")
@@ -58,16 +59,16 @@ while True:
     #     elif sensor_type == 3:
     #         print("Light...")
     #         light = random.randint(100, 500)
-    #         client.publish("cambien1", light)
+    #         client.publish("cambien2", light)
     #         sensor_type = 1
 
-    counter_ai -= 1
-    if counter_ai <= 0:
-        counter_ai = 5
-        previous_result = ai_result
-        ai_result = image_detector()
-        if previous_result != ai_result:
-            client.publish("ai",ai_result)
+    # counter_ai -= 1
+    # if counter_ai <= 0:
+    #     counter_ai = 5
+    #     previous_result = ai_result
+    #     ai_result = image_detector()
+    #     if previous_result != ai_result:
+    #         client.publish("ai", ai_result)
 
     readSerial(client)
     time.sleep(1)
